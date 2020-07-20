@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method = 'post' action = "/addtask/">
+    {% csrf_token %}
+        <div class="container" style="text-align: center">
+            <h1 style="margin:20px"> Todo App</h1>
+            <input type="text" name='task' style="margin-top:12px">
+            <input type="submit" class="btn btn-primary" name="" value="add">
+        </div>
+</form>
+
+{% for mytodo in mytodos %}
+    <p> id:{{mytodo.id}}  task:{{mytodo.task}} <a href="/deletetask/{{mytodo.id}}/"  class= "btn btn-danger">delete</a> <a href="/edittask/{{mytodo.id}}/" class="btn btn-success">Edit</a></p>
+{% endfor %}
+
+{% endblock %}
